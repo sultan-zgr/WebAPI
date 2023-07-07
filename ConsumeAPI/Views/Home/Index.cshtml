@@ -1,0 +1,35 @@
+﻿@model List<ConsumeAPI.ResponseModels.ProductResponseModel>
+
+<html>
+
+ <head>
+     <title> API </title>
+ </head>          
+ <body> 
+     <p>@ViewBag.ResponseMessage</p>
+     <a asp-action="Create" asp-controller="Home">Yeni Ürün Ekle</a>
+     <table>
+         <tr>
+             <th>Ürünün Adı</th>
+             <th>Ürünün Fiyatı</th>
+             <th>Ürünün Stoğu</th>
+         </tr>
+
+         @foreach ( var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Stock</td>
+            </tr>
+            <td>
+                <a asp-action="Update" asp-controller="Home" asp-route-id="@product.Id">Güncelle</a>
+                <a asp-action="Remove" asp-controller="Home" asp-route-id="@product.Id">Sil</a>
+            </td>
+        }
+
+     </table>
+
+ </body>
+
+</html>
